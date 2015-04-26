@@ -1,8 +1,7 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These methods are helper methods for computing inverse of a regular matrix and caaching those results
 
-## Write a short comment describing this function
-
+## makeCacheMatrix accepts a regular matrix and enhances it with caching helper methods
+## these methods are getinverse and setinverse
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
   set <- function(y) {
@@ -18,8 +17,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## cacheSolve accepts a cacheMatrix and solves for the inverse
+##  the method will use the cache solution if one exists, otherwise
+##  it will compute the answer and cache the results for future calls
+## The caching is helpful for large computationaly expensive matrix inverse operations
+## See makeCacheMatrix
+## parameter x - an object of type cacheMatrix
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   m <- x$getinverse()
@@ -32,14 +35,3 @@ cacheSolve <- function(x, ...) {
   x$setinverse(m)
   m
 }
-
-#makeSampleMatrix <- function(){
-  #M = matrix( 
-  #   c(2, 4, 3, 1, 5, 7), 
-  #   nrow=3, 
-  #   ncol=3) 
-  #return(M)
- 
-  #M = rbind(c(1, -1/4), c(-1/4, 1))
-  #return(M)
-#}
